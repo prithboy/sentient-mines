@@ -65,16 +65,6 @@ main {
     transition: 0.3s;
 }
 
-.tile.safe {
-    background-color: #00ff99;
-    color: #000;
-}
-
-.tile.mine {
-    background-color: #ff0044;
-    color: #fff;
-}
-
 .tile:hover {
     transform: scale(1.05);
 }
