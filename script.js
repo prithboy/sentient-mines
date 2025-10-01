@@ -11,7 +11,6 @@ let gameOver = false;
 const gridSize = 5;
 const totalTiles = gridSize * gridSize;
 const mineCount = 5; // Number of mines
-
 let minePositions = [];
 
 function createGrid() {
@@ -44,10 +43,16 @@ function revealTile() {
 
     if (minePositions.includes(index)) {
         this.classList.add('mine');
+        this.style.backgroundImage = "url('assets/angry_dobby.png')";
+        this.style.backgroundSize = "cover";
+        this.style.backgroundPosition = "center";
         messageEl.textContent = "💥 Virus detected. System compromised!";
         endGame();
     } else {
         this.classList.add('safe');
+        this.style.backgroundImage = "url('assets/happy_dobby.png')";
+        this.style.backgroundSize = "cover";
+        this.style.backgroundPosition = "center";
         score++;
         scoreEl.textContent = score;
         messageEl.textContent = "✅ Safe! Neural core intact.";
@@ -61,8 +66,10 @@ function endGame() {
 
     // Reveal all mines
     document.querySelectorAll('.tile').forEach((tile, i) => {
-        if (minePositions.includes(i)) {
-            tile.classList.add('mine');
+        if (minePositions.includes(i) && !tile.style.backgroundImage) {
+            tile.style.backgroundImage = "url('assets/angry_dobby.png')";
+            tile.style.backgroundSize = "cover";
+            tile.style.backgroundPosition = "center";
         }
     });
 }
